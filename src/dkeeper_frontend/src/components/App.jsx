@@ -10,7 +10,7 @@ function App() {
 
   function addNote(newNote) {
     setNotes(prevNotes => {
-      dkeeper_backend.createNote(newNote.title, newNote.content)
+      dkeeper_backend.createNote(newNote.title, newNote.content);
       return [newNote, ...prevNotes];
     });
   }
@@ -25,6 +25,8 @@ function App() {
   }
 
   function deleteNote(id) {
+    dkeeper_backend.removeNote(id);
+
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
